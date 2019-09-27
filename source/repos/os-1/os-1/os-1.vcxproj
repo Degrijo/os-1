@@ -121,6 +121,9 @@
   <ItemGroup>
     <ClCompile Include="Исходные файлы\mmemory.c" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="memory_area.c" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
