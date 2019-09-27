@@ -20,7 +20,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="memory_area.cpp">
+    <ClCompile Include="memory_area.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

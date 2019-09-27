@@ -23,4 +23,3 @@ void delete_node(LinkedList* linked_list, Node* element) {
 	}
 	free(element);
 }
-

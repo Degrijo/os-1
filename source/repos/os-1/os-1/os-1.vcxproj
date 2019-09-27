@@ -118,7 +118,7 @@
     <ClInclude Include="memory_area.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="memory_area.cpp" />
+    <ClCompile Include="memory_area.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
