@@ -15,7 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="memory_area.h">
+    <ClCompile Include="Исходные файлы\mmemory.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Файлы заголовков\memory_area.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Файлы заголовков\mmemory.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
