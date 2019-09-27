@@ -7,7 +7,7 @@
 typedef struct MemoryBlock {
 	VA va;
 	size_t size;
-	bool empty;
+	bool empty = true;
 } MemoryBlock;
 
 typedef struct Node {

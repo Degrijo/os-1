@@ -22,9 +22,11 @@ int _malloc(VA *ptr, size_t szBlock) {
 			if (iter_node->value->size > szBlock) {
 				*ptr = iter_node->value->va;
 				iter_node->value->size -= szBlock;
-				MemoryBlock *new_block ;
-				new_block->empty = false;
-				// adding block to memory_storage 
+				MemoryBlock *block;
+				block->size = szBlock;
+				block->empty = false;
+				// find new va
+				Node *node = create_node(block);  // choose plase for new node
 				return 0;
 			}
 		}
