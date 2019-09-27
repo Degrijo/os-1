@@ -33,3 +33,17 @@ int _malloc(VA *ptr, size_t szBlock) {
 	}
 	return 1;
 }
+
+int _free(VA ptr) {
+	if (ptr == NULL) return -1;
+	Node *iter_node = memory_storage->head;
+	while (iter_node != NULL) {
+		if (iter_node->value->va == ptr) {
+			// deleting block of memory_storage
+			return 0;
+		}
+		if (iter_node->next == NULL) return 1;
+		iter_node = iter_node->next;
+	}
+	return 1;
+}

@@ -1,24 +1,22 @@
 #include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include "mmemory.h"
 
 
-typedef struct Memory_block {
+typedef struct MemoryBlock {
 	VA va;
 	size_t size;
 	bool isEmpty;
-} Memory_block;
+} MemoryBlock;
 
 typedef struct Node {
-	Memory_block* value;
+	MemoryBlock* value;
 	struct Node* next;
 	struct Node* previous;
 } Node;
 
-typedef struct Linked_list {
+typedef struct LinkedList {
 	size_t size;
 	Node* head;
-} Linked_list;
-
-
-
-
+} LinkedList;
