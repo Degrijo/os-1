@@ -13,18 +13,20 @@ int _malloc(VA *ptr, size_t szBlock) {
 	if (ptr == NULL) return -1;
 	Node *iter_node = memory_storage->head;
 	while (iter_node != NULL) {
-		if (iter_node->value->isEmpty) {
+		if (iter_node->value->empty) {
 			if (iter_node->value->size == szBlock) {
 				*ptr = iter_node->value->va;
-				iter_node->value->isEmpty = false;
+				iter_node->value->empty = false;
 				return 0;
 			}
 			if (iter_node->value->size > szBlock) {
 				*ptr = iter_node->value->va;
 				iter_node->value->size -= szBlock;
-				MemoryBlock *new_block;
-				new_block->isEmpty = false;
-				// adding block to memory_storage 
+				MemoryBlock *block;
+				block->size = szBlock;
+				block->empty = false;
+				// find new va
+				Node *node = create_node(block);  // choose plase for new node
 				return 0;
 			}
 		}
@@ -38,8 +40,8 @@ int _free(VA ptr) {
 	if (ptr == NULL) return -1;
 	Node *iter_node = memory_storage->head;
 	while (iter_node != NULL) {
-		if (iter_node->value->va == ptr) {
-			// deleting block of memory_storage
+		if ((iter_node->value->va == ptr) && (!iter_node->value->empty)) {
+			// ifs and deleting
 			return 0;
 		}
 		if (iter_node->next == NULL) return 1;

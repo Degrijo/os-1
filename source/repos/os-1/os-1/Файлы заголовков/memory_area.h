@@ -7,13 +7,13 @@
 typedef struct MemoryBlock {
 	VA va;
 	size_t size;
-	bool isEmpty;
+	bool empty = true;
 } MemoryBlock;
 
 typedef struct Node {
 	MemoryBlock* value;
 	struct Node* next;
-	struct Node* previous;
+	struct Node* prev;
 } Node;
 
 typedef struct LinkedList {
