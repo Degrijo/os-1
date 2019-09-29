@@ -1,9 +1,8 @@
-//#include "pch.h"
 #include <malloc.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "mmemory.h"
-#include "memory_area.h"
+#include "../Файлы заголовков/memory_area.h"
+#include "../Файлы заголовков/mmemory.h"
 
 
 LinkedList *memory_storage;
@@ -22,10 +21,7 @@ int _malloc(VA *ptr, size_t szBlock) {
 			if (iter_node->value->size > szBlock) {
 				*ptr = iter_node->value->va;
 				iter_node->value->size -= szBlock;
-				MemoryBlock *block;
-				block->size = szBlock;
-				block->empty = false;
-				// find new va
+				MemoryBlock *block = create_memory_block(, szBlock);
 				Node *node = create_node(block);  // choose plase for new node
 				return 0;
 			}

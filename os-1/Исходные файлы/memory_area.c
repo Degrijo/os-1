@@ -1,11 +1,11 @@
-#include "memory_area.h"
-#include "mmemory.h"
+#include "../Файлы заголовков/memory_area.h"
+#include "../Файлы заголовков/mmemory.h"
 #include "stdio.h"
 
 
-Node* create_node(MemoryBlock* new_memory_block, Node* prev, Node* next) {
+Node* create_node(MemoryBlock* new_MemoryBlock, Node* prev, Node* next) {
 	Node* new_node = (Node*)malloc(sizeof(Node));
-	new_node->value = new_memory_block;
+	new_node->value = new_MemoryBlock;
 	new_node->prev = prev;
 	new_node->next = next;
 	return new_node;
@@ -24,18 +24,18 @@ void delete_node(LinkedList* linked_list, Node* element) {
 	free(element);
 }
 
-Memory_block* create_memory_block(VA va, size_t size) {
-	Memory_block* new_memory_block = (Memory_block*)malloc(sizeof(Memory_block));
+MemoryBlock* create_memory_block(VA va, size_t size) {
+	MemoryBlock* new_memory_block = (MemoryBlock*)malloc(sizeof(MemoryBlock));
 	new_memory_block->va = va;
 	new_memory_block->size = size;
-	new_memory_block->isEmpty = true;
+	new_memory_block->empty = true;
 	return new_memory_block;
 }
 
 Node* init_node(size_t size) {
-	VA va = (VA)  malloc(size*sizeof(VA))
-	Node* new node = create_node(create_memory_block(va, size), NULL, NULL);
-	return new_node;
+	VA va = (VA)malloc(size * sizeof(VA));
+	Node* node = create_node(create_MemoryBlock(va, size), NULL, NULL);
+	return node;
 }
 
 Node* get_node(LinkedList* linked_list, VA va) {
@@ -49,10 +49,10 @@ Node* get_node(LinkedList* linked_list, VA va) {
 	return NULL;
 }
 
-void insert(LinkedList* linked_list, Node* previous_node, Node* next_node, MemoryBlock* new_memory_block) {
+void insert(LinkedList* linked_list, Node* previous_node, Node* next_node, MemoryBlock* new_MemoryBlock) {
 	Node* ins = (Node*)malloc(sizeof(Node));
-	ins->value = new_memory_block;
-	ins->previous = previous_node;
+	ins->value = new_MemoryBlock;
+	ins->prev = previous_node;
 	ins->next = next_node;
 
 	if (previous_node == NULL) {
@@ -60,11 +60,11 @@ void insert(LinkedList* linked_list, Node* previous_node, Node* next_node, Memor
 	}
 	else {
 		previous_node->next = ins;
-		ins->previous = previous_node;
+		ins->prev = previous_node;
 	}
 
 	if (next_node != NULL) {
-		next_node->previous = ins;
+		next_node->prev = ins;
 		ins->next = next_node;
 	}
 }

@@ -7,7 +7,7 @@
 typedef struct MemoryBlock {
 	VA va;
 	size_t size;
-	bool empty = true;
+	bool empty;
 } MemoryBlock;
 
 typedef struct Node {
@@ -27,4 +27,3 @@ Node* create_node(MemoryBlock* new_memory_block, Node* previous, Node* next);
 void insert(LinkedList* linked_list, Node* previous_node, Node* next_node, MemoryBlock* new_memory_block);
 void delete_node(LinkedList* linked_list, Node* element);
 Node* get_node(LinkedList* linked_list, VA va);
-
