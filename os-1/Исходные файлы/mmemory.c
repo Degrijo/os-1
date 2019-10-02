@@ -9,6 +9,7 @@ LinkedList *memory_storage;
 
 
 int _malloc(VA *ptr, size_t szBlock) {
+	if (memory_storage == NULL) return 1;
 	if (ptr == NULL) return -1;
 	Node *iter_node = memory_storage->head;
 	while (iter_node != NULL) {
@@ -21,8 +22,8 @@ int _malloc(VA *ptr, size_t szBlock) {
 			if (iter_node->value->size > szBlock) {
 				*ptr = iter_node->value->va;
 				iter_node->value->size -= szBlock;
-				MemoryBlock *block = create_memory_block(, szBlock);
-				Node *node = create_node(block);  // choose plase for new node
+				MemoryBlock *block = create_memory_block(iter_node->value->va+szBlock, szBlock);
+				insert(memory_storage, iter_node, iter_node->next, block);
 				return 0;
 			}
 		}
@@ -33,6 +34,7 @@ int _malloc(VA *ptr, size_t szBlock) {
 }
 
 int _free(VA ptr) {
+	if (memory_storage == NULL) return 1;
 	if (ptr == NULL) return -1;
 	Node *iter_node = memory_storage->head;
 	while (iter_node != NULL) {
@@ -56,12 +58,30 @@ int _free(VA ptr) {
 }
 
 
-int _read(VA ptr, VA pBuffer, t_size szBuffer) {
-	if ((ptr == NULL)||(pBuffer == NULL)||(memory_storage == NULL)) return -1;
+int _read(VA ptr, VA pBuffer, size_t szBuffer) {
+	if (memory_storage == NULL) return 1;
+	if (ptr == NULL) return -1;
 	Node *iter_node = memory_storage->head;
 	while (iter_node != NULL) {
 		if ((iter_node->value->va == ptr) && (!iter_node->value->empty)) {
+			 
+			return 0;
+		}
+		if (iter_node->next == NULL) return 1;
+		iter_node = iter_node->next;
+	}
+	return 1;
+}
+
+
+int _write(VA ptr, void* pBuffer, size_t szBuffer) {
+	if (memory_storage == NULL) return 1;
+	if (ptr == NULL) return -1;
+	Node* iter_node = memory_storage->head;
+	while (iter_node != NULL) {
+		if ((iter_node->value->va == ptr) && (!iter_node->value->empty)) {
 			
+			return 0;
 		}
 		if (iter_node->next == NULL) return 1;
 		iter_node = iter_node->next;
