@@ -119,6 +119,7 @@
     <ClInclude Include="Файлы заголовков\memory_area.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Исходные файлы\main.c" />
     <ClCompile Include="Исходные файлы\mmemory.c" />
   </ItemGroup>
   <ItemGroup>

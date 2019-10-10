@@ -21,6 +21,9 @@
     <ClCompile Include="Исходные файлы\memory_area.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="Исходные файлы\main.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Файлы заголовков\memory_area.h">

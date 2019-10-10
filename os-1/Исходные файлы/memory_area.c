@@ -34,7 +34,7 @@ MemoryBlock* create_memory_block(VA va, size_t size) {
 
 Node* init_node(size_t size) {
 	VA va = (VA)malloc(size * sizeof(VA));
-	Node* node = create_node(create_MemoryBlock(va, size), NULL, NULL);
+	Node* node = create_node(create_memory_block(va, size), NULL, NULL);
 	return node;
 }
 
